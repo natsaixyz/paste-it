@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+  <title>Paste It! - Decentralized Pastebin Alternative</title>
+  
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Paste It! is a secure, decentralized pastebin alternative. Create and share your texts quickly and safely – powered by Walrus." />
+  <meta name="keywords" content="pastebin, decentralized, secure paste, text sharing, Walrus" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://paste.natsai.xyz/" />
+
+  <!-- Open Graph Tags -->
+  <meta property="og:title" content="Paste It! - Decentralized Pastebin Alternative" />
+  <meta property="og:description" content="Create and share your texts quickly and securely using Paste It!, powered by Walrus." />
+  <meta property="og:url" content="https://paste.natsai.xyz/" />
+  <meta property="og:type" content="website" />
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Paste It! - Decentralized Pastebin Alternative" />
+  <meta name="twitter:description" content="Create and share your texts quickly and securely using Paste It!, powered by Walrus." />
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PPVSXFFSVE"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-PPVSXFFSVE');
+  </script>
+
+
+  <!-- Google Font: Press Start 2P -->
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+
+  <!-- Prism CSS for Syntax Highlighting -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism-tomorrow.min.css" rel="stylesheet" />
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="style.css?v4.5">
+</head>
+<body>
+  <header class="site-header">
+    <h1><a href="/" class="home-link" title="Go to the homepage">Paste It!</a></h1>
+  </header>
+
+  <main class="container">
+    <!-- Create Paste Form -->
+    <section id="create-paste">
+      <!-- Content -->
+      <div class="form-group">
+        <label for="paste-content">Content:</label>
+        <textarea id="paste-content" placeholder="Enter your paste content..."></textarea>
+      </div>
+
+      <!-- Row 1: Title and Expiration -->
+      <div class="form-row">
+        <div class="form-col">
+          <div class="form-group">
+            <label for="title">Title:</label>
+            <input type="text" id="title" placeholder="Paste title (optional)" class="small-input">
+          </div>
+        </div>
+        <div class="form-col">
+          <div class="form-group">
+            <label for="expiration">Expiration:</label>
+            <select id="expiration" class="small-input">
+              <option value="1">1 Epoch</option>
+              <option value="5">5 Epochs</option>
+              <option value="10">10 Epochs</option>
+              <option value="25">25 Epochs</option>
+              <option value="never">Never</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- Row 2: Syntax Highlighting and Password -->
+      <div class="form-row">
+        <div class="form-col">
+          <div class="form-group">
+            <label for="syntax">Syntax Highlighting:</label>
+            <select id="syntax" class="small-input">
+              <option value="none">Plain Text</option>
+              <optgroup label="------ POPULAR LANGUAGES -------">
+                <option value="bash">Bash</option>
+                <option value="c">C</option>
+                <option value="csharp">C#</option>
+                <option value="cpp">C++</option>
+                <option value="css">CSS</option>
+                <option value="html">HTML</option>
+                <option value="json">JSON</option>
+                <option value="java">Java</option>
+                <option value="javascript">JavaScript</option>
+                <option value="lua">Lua</option>
+                <option value="objc">Objective C</option>
+                <option value="php">PHP</option>
+                <option value="perl">Perl</option>
+                <option value="python">Python</option>
+                <option value="ruby">Ruby</option>
+                <option value="swift">Swift</option>
+              </optgroup>
+            </select>
+          </div>
+        </div>
+        <div class="form-col">
+          <div class="form-group">
+            <label for="paste-password">Password Protect?:</label>
+            <div class="password-wrapper small-wrapper">
+              <input type="password" id="paste-password" placeholder="Password (optional)" class="small-input">
+              <span id="toggle-password" class="toggle-password"><i class="fas fa-eye"></i></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tags Input Field (hidden) -->
+      <div class="form-group" style="display:none">
+        <label for="tag-input">Tags:</label>
+        <div id="tags-input" class="bootstrap-tagsinput">
+          <input type="text" id="tag-input" placeholder="Add a tag" aria-label="Tags" class="small-input">
+        </div>
+      </div>
+
+      <!-- hCaptcha widget -->
+      <div class="form-group">
+        <div class="h-captcha" data-sitekey="bbca6fd2-1d4c-45c6-8468-f8c486bad786"></div>
+      </div>
+
+      <button id="create-btn">Create Paste</button>
+      <div class="loader" id="loader"></div>
+    </section>
+
+    <!-- Paste Display (hidden by default) -->
+    <section id="paste-result" class="hidden">
+      <h2 id="paste-title"></h2>
+      <p id="paste-meta" class="paste-meta"></p>
+      <pre class="paste-display"><code id="paste-code"></code></pre>
+      <div id="paste-tags" class="tags-container"></div>
+      <hr class="divider">
+      <p id="paste-source" class="paste-source"></p>
+      <!-- Paste Action Buttons -->
+      <div id="paste-actions" class="paste-actions">
+        <a href="#" id="copy-link" title="Copy link to clipboard">🔗 Copy Link</a>
+        <a href="#" id="copy-content" title="Copy content to clipboard">📄 Copy Content</a>
+        <a href="#" id="share-link" title="Share this paste">📤 Share</a>
+        <a href="#" id="print-page" title="Print this paste">🖨 Print</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p class="subtitle">
+      The decentralized pastebin alternative – powered by <a href="https://www.walrus.xyz/about" target="_blank">Walrus</a>
+    </p>
+	<p>© <span id="current-year"></span> Made with <span class="heart">♥</span> by <a href="https://natsai.xyz" target="_blank" rel="noopener noreferrer">Natsai.xyz</a></p>
+  </footer>
+
+  <!-- Prism Core and Autoloader -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/prism.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/plugins/autoloader/prism-autoloader.min.js" defer></script>
+  <!-- hCaptcha -->
+  <script src="https://js.hcaptcha.com/1/api.js" async defer></script>
+  <!-- Custom JS -->
+  <script type="module" src="main.js?v4.7" defer></script>
+</body>
+</html>

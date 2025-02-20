@@ -1,0 +1,345 @@
+:root {
+  --bg-color: #0a0e14;
+  --text-color: #c7c7c7;
+  --accent-color: #2b90d9;
+  --border-color: #2f3542;
+}
+
+/* Utility Classes */
+.hidden {
+  display: none;
+}
+
+/* Base Styles */
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: 'Press Start 2P', cursive;
+  line-height: 1.6;
+  margin: 0;
+  padding: 20px;
+  min-height: 100vh;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+h1 {
+  color: var(--accent-color);
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+/* Form Elements */
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+  color: #aaa;
+}
+
+input,
+textarea,
+select {
+  border: 1px solid var(--border-color);
+  padding: 0.8rem;
+  border-radius: 6px;
+  font-size: 1rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+select {
+  background-color: #fff !important;
+  color: #000 !important;
+}
+
+select option {
+  background-color: #fff !important;
+  color: #000 !important;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: 2px solid var(--accent-color);
+  outline-offset: -1px;
+  color: #000;
+}
+
+/* For small inputs */
+.small-input {
+  width: 100% !important;
+}
+
+/* Increase height for content textarea */
+#paste-content {
+  min-height: 200px;
+}
+
+/* Button */
+button {
+  background: var(--accent-color);
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  width: 100%;
+  transition: opacity 0.2s;
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+/* Loader */
+.loader {
+  display: none;
+  border: 4px solid rgba(255, 255, 255, 0.1);
+  border-top: 4px solid var(--accent-color);
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  animation: spin 1s linear infinite;
+  margin: 20px auto;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.subtitle {
+  text-align: center;
+  font-size: 0.8rem;
+  color: #aaa;
+  margin-top: -0.5rem;
+  margin-bottom: 2rem;
+}
+.subtitle a {
+  color: var(--accent-color);
+  text-decoration: none;
+}
+.subtitle a:hover {
+  text-decoration: underline;
+}
+.site-footer .subtitle {
+  text-align: center;
+  font-size: 1.1rem;
+  color: #aaa;
+  margin-top: 0.5rem;
+}
+
+
+
+.home-link {
+  color: var(--accent-color);
+  text-decoration: none;
+}
+
+.home-link:hover {
+  text-decoration: none;
+}
+
+/* Paste Display */
+.paste-display {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  padding: 1rem;
+  margin-top: 1rem;
+  overflow-x: auto;
+}
+
+.paste-meta {
+  margin-bottom: 1rem;
+  font-size: 0.8rem;
+  color: #aaa;
+}
+
+.tags-container {
+  margin-top: 1rem;
+}
+
+/* More low-key paste tags (separated by spaces) */
+.tags-container .tag {
+  background: transparent;
+  color: #aaa;
+  font-size: 0.8rem;
+  padding: 0.1rem 0.3rem;
+  margin-right: 0.3rem;
+  border-radius: 3px;
+  display: inline-block;
+}
+
+.tags-container .tag:not(:last-child)::after {
+  content: " | ";
+  color: #aaa;
+  margin-left: 0.3rem;
+}
+
+/* Password Wrapper */
+.password-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.password-wrapper input {
+  padding-right: 2.5em; /* to avoid text overlapping the icon */
+  box-sizing: border-box;
+}
+
+/* Toggle icon styling */
+.toggle-password {
+  position: absolute;
+  right: 0.75em;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  font-size: 1.2em;
+  color: #888;
+  background: transparent;
+  border: none;
+  outline: none;
+}
+
+/* Form Row and Column for two-column layout */
+.form-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.form-col {
+  flex: 1;
+  min-width: 200px;
+}
+
+/* Adjust password wrapper inside a small column */
+.password-wrapper.small-wrapper {
+  width: 100%;
+}
+
+.password-wrapper.small-wrapper input.small-input {
+  width: 100%;
+  padding-right: 2.5em;
+  box-sizing: border-box;
+}
+
+/* Paste source */
+.paste-source {
+  margin-top: 1rem;
+  font-size: 0.6rem;
+  color: #888;
+}
+
+/* Divider */
+.divider {
+  margin: 1rem 0;
+  border: 0;
+  border-top: 1px solid var(--border-color);
+}
+
+button#create-btn {
+	width:50%;
+}
+
+/* Tag Input Styles */
+.bootstrap-tagsinput {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0.4rem;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  background-color: #fff;
+  color: #000;
+}
+
+.bootstrap-tagsinput .tag {
+  background: var(--accent-color);
+  color: #fff;
+  padding: 0.2rem 0.5rem;
+  margin: 0.2rem;
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+}
+
+.bootstrap-tagsinput .tag [data-role="remove"] {
+  cursor: pointer;
+  margin-left: 0.5rem;
+}
+
+.bootstrap-tagsinput input {
+  border: none;
+  outline: none;
+  min-width: 3em;
+  width: 150px;
+  color: #000;
+}
+
+/* Footer */
+.site-footer {
+  text-align: center;
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border-color);
+  font-size: 0.8rem;
+  color: #aaa;
+}
+
+.site-footer a {
+  color: var(--accent-color);
+  text-decoration: none;
+}
+
+.site-footer a:hover {
+  text-decoration: underline;
+}
+
+.heart {
+  font-size: 1rem;
+  color: red;
+  display: inline-block;
+  vertical-align: middle;
+  transform: scale(1.2) translateY(-5px);
+}
+
+/* Paste Actions */
+.paste-actions {
+  margin-top: 1rem;
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.paste-actions a {
+  text-decoration: none;
+  background: var(--accent-color);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.paste-actions a:hover {
+  opacity: 0.9;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  body { padding: 15px; }
+  h1 { font-size: 2rem; }
+  textarea { height: 200px; }
+}
