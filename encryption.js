@@ -1,4 +1,7 @@
-// encryption.js
+/*
+ * encryption.js
+ * Encryption helper functions for Paste It!
+ */
 
 // Convert a string to an ArrayBuffer
 export function strToArrayBuffer(str) {
@@ -46,7 +49,7 @@ export async function deriveKey(password, salt) {
   );
 }
 
-// Encrypt content using AES-GCM (with a "MAGIC:" prefix)
+// Encrypt content using AES-GCM (adds a "MAGIC:" prefix for verification)
 export async function encryptContent(content, password) {
   const salt = window.crypto.getRandomValues(new Uint8Array(16));
   const iv = window.crypto.getRandomValues(new Uint8Array(12));

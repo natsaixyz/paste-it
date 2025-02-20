@@ -139,8 +139,6 @@ button:hover {
   margin-top: 0.5rem;
 }
 
-
-
 .home-link {
   color: var(--accent-color);
   text-decoration: none;
@@ -194,7 +192,7 @@ button:hover {
 }
 
 .password-wrapper input {
-  padding-right: 2.5em; /* to avoid text overlapping the icon */
+  padding-right: 2.5em;
   box-sizing: border-box;
 }
 
@@ -251,7 +249,7 @@ button:hover {
 }
 
 button#create-btn {
-	width:50%;
+  width: 50%;
 }
 
 /* Tag Input Styles */
