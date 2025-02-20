@@ -37,7 +37,7 @@ To run this project locally:
    ```bash
    git clone https://github.com/natsaixyz/paste-it.git
    cd paste-it
-```
+
 
 ## Custom Configuration
 
