@@ -37,3 +37,15 @@ To run this project locally:
    ```bash
    git clone https://github.com/natsaixyz/paste-it.git
    cd paste-it
+```
+
+## Custom Configuration
+
+This project uses a configuration file, [`config.js`](config.js), to store important settings such as the publisher and aggregator URLs. By default, these are set to:
+
+- **Publisher:** `https://walrus-testnet-publisher.natsai.xyz`
+- **Aggregator:** `https://walrus-testnet-aggregator.natsai.xyz`
+
+If you'd like to use your own endpoints or choose from one of the public endpoints provided by Walrus, simply update the values in `config.js`. For a list of available public aggregators, see the [Walrus Web API Documentation](https://docs.walrus.site/usage/web-api.html#public-aggregators).
+
+This makes it easy to customize the backend services without modifying the rest of the application code.
